@@ -18,7 +18,7 @@ object ADTProcessor {
 
       val rawdata = sc.sequenceFile[String,String](args(0))
       val processed = rawdata.mapPartitions(partition =>{
-            val xmsgSender = "string(/NS1:HL7/NS1:MSH/NS1:MSH.3.SendingApplication/NS1:HD.1.NamespaceId)"
+            val xmsgSender = "string(/NS1:HL7/NS1:MSH/NS1:MSH.3.SendingApplication/NS1:HD.1.NamespaceID)"
             val xmsgType = "concat(string(/NS1:HL7/NS1:MSH/NS1:MSH.9.MessageType/NS1:MSG.1.MessageType),string(/NS1:HL7/NS1:MSH/NS1:MSH.9.MessageType/NS1:MSG.2.TriggerEvent))"
             val xmsgId = "string(/NS1:HL7/NS1:MSH/NS1:MSH.10.MessageControlID)"
             val namespaces = new util.HashMap[String,String](Map(
